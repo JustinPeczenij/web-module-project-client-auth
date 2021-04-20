@@ -2,7 +2,9 @@ import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
-import Login from './components/Login'
+import Login from './components/Login';
+import FriendsList from './components/FriendsList';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   return (
@@ -15,7 +17,7 @@ function App() {
           </nav>
         </header>
         <Switch>
-          <Route path='/friends-list' />
+          <PrivateRoute path='/friends-list' component={FriendsList} />
           <Route component={Login} />
         </Switch>
       </div>
