@@ -31,7 +31,10 @@ function FriendsList() {
         e.preventDefault();
         axiosWithAuth()
             .post('/api/friends', formValues)
-            .then(res => console.log(res))
+            .then(res => {
+                console.log(res)
+                setFriends([res])
+            })
             .catch(err => console.log(err))
     }
 
