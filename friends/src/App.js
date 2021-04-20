@@ -11,9 +11,11 @@ function App() {
         <header className="App-header">
           <nav>
             <Link to='/login'>Login</Link>
+            <Link to='/friends-list'>Friends List</Link>
           </nav>
         </header>
         <Switch>
+          <Route path='/friends-list' />
           <Route component={Login} />
         </Switch>
       </div>
