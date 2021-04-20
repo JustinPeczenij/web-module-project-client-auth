@@ -1,13 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
+import Friends from './Friends'
+
 function FriendsList() {
+    const [friends, setFriends] = useState([])
     const [formValues, setFormValues] = useState({
         name: '',
         age: '',
         email: '',
-        id: ''
     })
+
+    useEffect(()=> {
+        axiosWithAuth()
+            .get('/api/friends')
+            .then(res => {
+                setFriends(res.data)
+            })
+            .catch(err => console.log(err))
+    }, [friends])
 
     const handleChanges = (e) => {
         setFormValues({
@@ -51,6 +62,13 @@ function FriendsList() {
                 />
                 <button type='submit'>Add a Friend!</button>
             </form>
+            <section className='friends-list-container'>
+                {
+                    friends.map(f => {
+                        return <Friends friend={f} key={f.id}/>
+                    })
+                }
+            </section>
         </div>
     )
 }

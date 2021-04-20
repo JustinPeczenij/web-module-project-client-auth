@@ -32,6 +32,17 @@ nav > * {
   margin: 0 2%;
 }
 
+.friends-list-container {
+  display:flex;
+  justify-content: center;
+}
+
+.friends-list {
+  display:flex;
+  flex-direction: column;
+  margin :2%;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
